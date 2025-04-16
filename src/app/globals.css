@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --border-radius: 8px;
+  --transition-ease: all 0.3s ease;
+  --overlay-opacity: 0.75;  /* 背景遮罩透明度 - 调整为更加透明 */
+  --background-rgb: 255, 255, 255;
+  --foreground-rgb: 23, 23, 23;
+  --fallback-bg: linear-gradient(135deg, #f0f4ff 0%, #e9f3ff 50%, #f2f8ff 100%); /* 备用背景 */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --background-rgb: 10, 10, 10;
+    --foreground-rgb: 237, 237, 237;
+    --overlay-opacity: 0.65;  /* 暗模式下遮罩透明度更低，使背景更明显 */
+    --fallback-bg: linear-gradient(135deg, #1a1f2e 0%, #182032 50%, #1c2438 100%); /* 暗模式备用背景 */
+  }
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-image: url('/images/procreate-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+body {
+  background-color: rgba(var(--background-rgb), 0.65); /* 使用更透明的背景色 */
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 增加内容区域样式，确保文本可读性 */
+main {
+  position: relative; /* 相对定位，用于内容区域的伪元素 */
+}
+
+/* 在内容区域添加额外的半透明白色背景层，提高文本可读性 */
+main > div:not(.bg-white):not([class*="bg-"]):not([style*="background"]) {
+  position: relative;
+}
+
+main > div:not(.bg-white):not([class*="bg-"]):not([style*="background"])::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(var(--background-rgb), 0.45);
+  border-radius: 1rem;
+  z-index: -1;
+  backdrop-filter: blur(4px);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-ease);
+}
+
+button {
+  cursor: pointer;
+  transition: var(--transition-ease);
+}
+
+/* 响应式布局的基础样式 */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+/* 隐藏滚动条但保持滚动功能 */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+/* 改进页面过渡效果 */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* 卡片样式增强 */
+.card {
+  border-radius: var(--border-radius);
+  background-color: rgba(var(--background-rgb), 0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  transition: var(--transition-ease);
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}

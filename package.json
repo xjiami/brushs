@@ -1,0 +1,46 @@
+{
+  "name": "procreate-brush-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "setup": "node scripts/setup-local-dev.js",
+    "generate-test-data": "node scripts/generate-test-data.js",
+    "create-admin": "node scripts/create-admin.js",
+    "migrate": "node scripts/execute-migration.js",
+    "fix-build": "node scripts/build-fix.js"
+  },
+  "dependencies": {
+    "@paddle/paddle-js": "^1.0.0",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-toast": "^1.1.5",
+    "@supabase/auth-helpers-nextjs": "^0.8.7",
+    "@supabase/ssr": "^0.0.10",
+    "@supabase/supabase-js": "^2.39.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "dotenv": "^16.3.1",
+    "framer-motion": "^10.18.0",
+    "next": "15.2.5",
+    "rc-slider": "^10.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.5",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
